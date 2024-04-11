@@ -1,12 +1,14 @@
-from Modelo import modelo, animal_misterioso
+from Modelo import modelo
+from sklearn.metrics import accuracy_score, confusion_matrix
 
-animal_previsto = modelo.predict([animal_misterioso])
 
-if animal_previsto == 0:
-    print('O animal é um pato')
-elif animal_previsto == 2:
-    print('O animal é um gato')
-elif animal_previsto == 1:
-    print('O animal é um ganso.')
+misterio1 = [1, 1, 1]
+misterio2 = [1, 0, 0]
+misterio3 = [0, 0, 0]
 
-print('Fim do programa.')
+teste_x = [misterio1, misterio2, misterio3]
+teste_y = [1, 1, 0]
+
+previsoes_y = modelo.predict(teste_x)
+acuraria = accuracy_score(teste_y, previsoes_y)
+print(f'Acurácia: {acuraria:.3f}')
